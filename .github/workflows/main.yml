@@ -19,4 +19,18 @@ jobs:
       run: pip install bandit
 
     - name: Run bandit scan
-      run: bandit -r -ll -ii .      #scans everything in current folder
+      run: bandit -r -ll -ii . -f json -o bandit-report.json  #scans everything in current folder
+
+    - name: Upload artifact
+      uses: actions:upload-artifact@v3
+      if: always()
+      with:
+        name: Bandit-errors
+        path: bandit-report.json
+
+    - name: Download artifact
+      uses: actions/download-artifacts@v2
+      if: always()
+      with:
+        name: Bandit-errors
+        path: bandit-report.json
