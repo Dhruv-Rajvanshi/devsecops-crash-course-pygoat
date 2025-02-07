@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y dnsutils=1:9.11
  # && rm -rf /var/lib/apt/lists/*
 
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# # Set environment variables
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONUNBUFFERED 1
 
 
 # Install dependencies
