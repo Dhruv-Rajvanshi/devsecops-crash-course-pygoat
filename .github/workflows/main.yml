@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  scan:
+    name: Test Scan
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/chechkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install Bandit
+      run: pip install bandit
+
+    - name: Run bandit scan
+      run: bandit -r .      #scans everything in current folder
