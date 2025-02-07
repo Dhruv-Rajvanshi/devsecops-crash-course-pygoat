@@ -28,3 +28,25 @@ jobs:
         name: Bandit-errors
         path: bandit-report.json
 
+  image_scan:
+    name: Docker build and run
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up docker
+        uses: docker/setup-docker-action@v4.1.0
+        with: 
+          docker-version: 27.5.1
+
+      - name: Build immage
+        run: docker build -t my-app:latest .
+
+      - name: Scan docker image 
+        uses: docker/scout-action@v1.16.1
+        with:
+          dockerhub-user: ${{secrets.DOCKER_USERNAME}}
+          dockerhub-password: $${{secrets.DOCKER_PASSWORD}}
+          command: quickview, cves
+          
