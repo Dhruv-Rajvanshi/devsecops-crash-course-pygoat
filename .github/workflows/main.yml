@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
-      uses: actions/chechkout@v4
+      uses: actions/checkout@v4
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -19,4 +19,4 @@ jobs:
       run: pip install bandit
 
     - name: Run bandit scan
-      run: bandit -r .      #scans everything in current folder
+      run: bandit -r -ll -ii .      #scans everything in current folder
