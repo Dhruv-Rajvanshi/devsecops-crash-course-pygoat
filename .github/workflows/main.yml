@@ -27,10 +27,3 @@ jobs:
       with:
         name: Bandit-errors
         path: bandit-report.json
-
-    - name: Download artifact
-      uses: actions/download-artifacts@v2
-      if: always()
-      with:
-        name: Bandit-errors
-        path: bandit-report.json
