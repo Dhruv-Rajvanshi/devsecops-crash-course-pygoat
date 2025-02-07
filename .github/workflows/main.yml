@@ -22,7 +22,7 @@ jobs:
       run: bandit -r -ll -ii . -f json -o bandit-report.json  #scans everything in the current folder
 
     - name: Upload artifact
-      uses: actions:upload-artifact@v3
+      uses: actions/upload-artifact@v3
       if: always()
       with:
         name: Bandit-errors
